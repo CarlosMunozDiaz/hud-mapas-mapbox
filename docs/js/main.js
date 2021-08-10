@@ -37,8 +37,8 @@ function initData() {
         container: 'mapbox',
         style: 'mapbox://styles/mapbox/light-v10',
         center: [-58.5033387, -34.6158037],
-        minZoom: 11,
-        zoom: 11
+        minZoom: 9.5,
+        zoom: 9.5
     });
 
     map.on('load', function() {
@@ -51,7 +51,7 @@ function initData() {
         //Segunda fuente de datos > Ahora mismo tenemos el zoom especificado > Cambiar
         map.addSource('ba_roads', {
             'type': 'vector',
-            'url': 'mapbox://carlomunoz.5liz8p83'
+            'url': 'mapbox://carlomunoz.3vcrombp'
         });
 
         //Layer > Espacios verdes
@@ -73,7 +73,7 @@ function initData() {
         map.addLayer({
             'id': 'layer_ba_roads',
             'source': 'ba_roads',
-            'source-layer': 'buenos_roads_distance_3-11e3t0',
+            'source-layer': 'buenos_roads_distance',
             'layout': {'visibility': 'none'},           
             'type': 'line',
             'paint': {
@@ -85,7 +85,6 @@ function initData() {
 }
 
 function updateMap(tipo) {
-    console.log(tipo);
     if (tipo == 'buenos_pop_overcrowd') {
         map.setLayoutProperty('layer_ba_roads', 'visibility', 'none');
         map.setLayoutProperty('layer_ba_greenspace', 'visibility', 'visible');
