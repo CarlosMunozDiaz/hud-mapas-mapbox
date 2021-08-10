@@ -37,8 +37,8 @@ function initData() {
         container: 'mapbox',
         style: 'mapbox://styles/mapbox/light-v10',
         center: [-58.5033387, -34.6158037],
-        minZoom: 9.5,
-        zoom: 9.5
+        minZoom: 9,
+        zoom: 9
     });
 
     map.on('load', function() {
@@ -77,8 +77,18 @@ function initData() {
             'layout': {'visibility': 'none'},           
             'type': 'line',
             'paint': {
-                'line-color': 'red',
-                'line-width': .5
+                'line-color': [
+                    'step',
+                    ['get', 'Hub distan'],
+                    'blue',
+                    500,
+                    'green',
+                    1000,
+                    'yellow',
+                    1500,
+                    'red'
+                ],
+                'line-width': .75
             }
         });
     });
