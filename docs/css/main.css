@@ -29,7 +29,7 @@ html, body, p {
     display: block;
 }
 
-#leaflet {
+#mapbox {
 	width: 100%;
 	max-width: 768px;
 	height: 525px;
