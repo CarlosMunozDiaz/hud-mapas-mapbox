@@ -36,7 +36,7 @@ function initData() {
     map = new mapboxgl.Map({
         container: 'mapbox',
         style: 'mapbox://styles/mapbox/light-v10',
-        center: [-34.6158037, -58.5033387],
+        center: [-58.5033387, -34.6158037],
         zoom: 9
     });
 
@@ -62,8 +62,7 @@ function initData() {
             }
         );
 
-        console.log(map.getLayer('layer_ba_greenspace'));
-        
+        console.log(map.getLayer('layer_ba_greenspace'));        
     });
 }
 
