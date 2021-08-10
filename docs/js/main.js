@@ -37,37 +37,62 @@ function initData() {
         container: 'mapbox',
         style: 'mapbox://styles/mapbox/light-v10',
         center: [-58.5033387, -34.6158037],
-        zoom: 9
+        minZoom: 11,
+        zoom: 11
     });
 
     map.on('load', function() {
-        console.log("Entra");
         //Fuente de datos
         map.addSource('ba_greenspace', {
             'type': 'vector',
             'url': 'mapbox://carlomunoz.8z3ymagb'
         });
 
-        //Layer
+        //Segunda fuente de datos > Ahora mismo tenemos el zoom especificado > Cambiar
+        map.addSource('ba_roads', {
+            'type': 'vector',
+            'url': 'mapbox://carlomunoz.5liz8p83'
+        });
+
+        //Layer > Espacios verdes
         map.addLayer(
             {
             'id': 'layer_ba_greenspace',
             'source': 'ba_greenspace',
             'source-layer': 'buenos_pop_overcrowd-7v3q8c',
+            'layout': {'visibility': 'visible'},
             'type': 'fill',
             'paint': {
-                'fill-color': "red",
+                'fill-color': "green",
                 'fill-opacity': 0.75
             }
             }
         );
-
-        console.log(map.getLayer('layer_ba_greenspace'));        
+        
+        //Layer > Callejero
+        map.addLayer({
+            'id': 'layer_ba_roads',
+            'source': 'ba_roads',
+            'source-layer': 'buenos_roads_distance_3-11e3t0',
+            'layout': {'visibility': 'none'},           
+            'type': 'line',
+            'paint': {
+                'line-color': 'red',
+                'line-width': .5
+            }
+        });
     });
 }
 
 function updateMap(tipo) {
     console.log(tipo);
+    if (tipo == 'buenos_pop_overcrowd') {
+        map.setLayoutProperty('layer_ba_roads', 'visibility', 'none');
+        map.setLayoutProperty('layer_ba_greenspace', 'visibility', 'visible');
+    } else {
+        map.setLayoutProperty('layer_ba_greenspace', 'visibility', 'none');
+        map.setLayoutProperty('layer_ba_roads', 'visibility', 'visible');
+    }
 }
 
 function setBtn(btn) {
