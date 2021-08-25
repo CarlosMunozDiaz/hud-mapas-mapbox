@@ -1,5 +1,5 @@
 //Variables globales
-let mapBA;
+let mapBA, popupBA;
 let currentBtnBA = 'btnZonasVerdesBA', currentLegendBA = 'ldZonasVerdesBA';
 
 initDataBA();
@@ -40,6 +40,15 @@ function initDataBA() {
         minZoom: 9,
         zoom: 9
     });
+
+    /* Tooltip */
+    popupBA = new mapboxgl.Popup({
+        closeButton: true,
+        closeOnClick: false
+    });
+
+    const nav = new mapboxgl.NavigationControl({showCompass: false});
+    mapBA.addControl(nav, 'top-right');
 
     mapBA.on('load', function() {
         //Fuente de datos
@@ -91,6 +100,15 @@ function initDataBA() {
                 'line-width': 1.25
             }
         });
+
+        //Dejar para hacerlo solo en mobile
+        if(window.innerWidth < 575) {
+            mapBA.scrollZoom.disable();
+        }     
+
+        //Popup
+        bind_event_ba(popupBA, 'ba_greenspace');
+        bind_event_ba(popupBA, 'ba_roads');
     });
 }
 
@@ -118,4 +136,34 @@ function setLegendBA(legend) {
         legends[i].classList.remove('active');
     }
     document.getElementById(legend).classList.add('active');
+}
+
+/* TOOLTIP */
+function bind_event_ba(popup, id){
+    mapBA.on('mousemove', id, function(e){
+        console.log(e);
+        //Comprobar el ID aquí o en la función del texto
+        let propiedades = e.features[0];
+        mapBA.getCanvas().style.cursor = 'pointer';
+        var coordinates = e.lngLat;
+
+        var tooltipText = get_tooltip_text_ba(propiedades);
+
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }        
+        popupBA.setLngLat(coordinates)
+            .setHTML(tooltipText)
+            .addTo(mapBA);
+
+        mapBA.getCanvas().style.cursor = 'pointer';
+    });
+    mapBA.on('mouseleave', id, function() {
+        mapBA.getCanvas().style.cursor = '';
+        popupBA.remove();
+    });
+}
+
+function get_tooltip_text_ba(prueba) {
+    return 'Hola';
 }
