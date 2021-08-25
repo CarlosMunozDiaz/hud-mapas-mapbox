@@ -10,6 +10,11 @@ html, body, p {
 	margin: 0 auto;
 }
 
+.inner-container {
+	width: 100%;
+	margin: 0 auto 40px auto;
+}
+
 .box {
 	margin: 20px auto;
 }
@@ -22,14 +27,69 @@ html, body, p {
 }
 
 .legend {
+    /* Disposición de elementos */
     display: none;
 }
 
 .legend.active {
-    display: block;
+    /* Disposición de elementos */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
 }
 
-#mapbox {
+.legend--item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 15px;
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 10px;    
+
+    padding-left: 24px;
+    margin-right: 16px;
+    margin-top: 12px; /* Incorporamos aquí este atributo y no 'chart__legend' para que en dispositivos móviles funcione correctamente el flex-wrap */
+}
+
+.legend--item:last-child {
+    margin-right: 0px;
+}
+
+.legend--item:before {
+    position: absolute;
+    content: '';
+    top: 50%;
+	transform: translateY(-50%);
+    left: 0;
+    width: 18px;
+    height: 2.5px;
+    background-color: #ccc;
+}
+
+.legend--item.zona-verde:before {
+    background-color: green;
+}
+
+.legend--item.calle-uno:before {
+    background-color: blue;
+}
+
+.legend--item.calle-dos:before {
+    background-color: green;
+}
+
+.legend--item.calle-tres:before {
+    background-color: yellow;
+}
+
+.legend--item.calle-cuatro:before {
+    background-color: red;
+}
+
+#mapboxBA, #mapboxSS {
 	width: 100%;
 	max-width: 768px;
 	height: 525px;
