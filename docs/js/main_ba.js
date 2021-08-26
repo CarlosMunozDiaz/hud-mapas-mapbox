@@ -43,7 +43,7 @@ function initDataBA() {
 
     /* Tooltip */
     popupBA = new mapboxgl.Popup({
-        closeButton: true,
+        closeButton: false,
         closeOnClick: false
     });
 
@@ -107,8 +107,8 @@ function initDataBA() {
         }     
 
         //Popup
-        bind_event_ba(popupBA, 'ba_greenspace');
-        bind_event_ba(popupBA, 'ba_roads');
+        bind_event_ba('layer_ba_greenspace');
+        bind_event_ba('layer_ba_roads');
     });
 }
 
@@ -139,15 +139,14 @@ function setLegendBA(legend) {
 }
 
 /* TOOLTIP */
-function bind_event_ba(popup, id){
+function bind_event_ba(id){
     mapBA.on('mousemove', id, function(e){
-        console.log(e);
         //Comprobar el ID aquí o en la función del texto
         let propiedades = e.features[0];
         mapBA.getCanvas().style.cursor = 'pointer';
         var coordinates = e.lngLat;
 
-        var tooltipText = get_tooltip_text_ba(propiedades);
+        var tooltipText = get_tooltip_text_ba(propiedades, id);
 
         while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
             coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
@@ -164,6 +163,13 @@ function bind_event_ba(popup, id){
     });
 }
 
-function get_tooltip_text_ba(prueba) {
-    return 'Hola';
+function get_tooltip_text_ba(props, id) {
+    let html = '';
+    if(id == 'layer_ba_greenspace') {
+        html = `<p>Hectáreas de esta zona: ${props.properties.area_ha}</p>`;
+    } else {
+        html = `<p><b>Calle ${props.properties.name}</b></p>
+            <p>Distancia a una zona verde: ${props.properties['Hub distan'].toFixed(0)} metros</p>`;
+    }
+    return html;
 }
