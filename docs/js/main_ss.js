@@ -72,8 +72,8 @@ function initDataSS() {
             'layout': {'visibility': 'visible'},
             'type': 'fill',
             'paint': {
-                'fill-color': "green",
-                'fill-opacity': 0.75
+                'fill-color': "#63DAAF",
+                'fill-opacity': 1
             }
             }
         );
@@ -89,13 +89,13 @@ function initDataSS() {
                 'line-color': [
                     'step',
                     ['get', 'Hub distan'],
-                    'blue',
+                    '#095677',
                     500,
-                    'green',
+                    '#9B918C',
                     1000,
-                    'yellow',
+                    '#FEB531',
                     1500,
-                    'red'
+                    '#9CBDD2'
                 ],
                 'line-width': 1.25
             }

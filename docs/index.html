@@ -1,62 +1,63 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Mapbox - HUD</title>
+		<title>HUD - Mapas</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700,800,900&amp;display=swap" rel="stylesheet">
         <link href="https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.css" rel="stylesheet">
         <script src="https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.js"></script>
+        <link type="text/css" rel="stylesheet" href="./css/reset.css" />
 		<link type="text/css" rel="stylesheet" href="./css/main.css" />
 	</head>
 	<body>
-        <div class="container">
-            <div class="inner-container">
-                <h2>Mapa Buenos Aires</h2>
-                <!-- Primero -->
-                <div class="box">
-                    <button class="btn btn-ba active" id="btnZonasVerdesBA">Zonas verdes</button>
-                    <button class="btn btn-ba" id="btnCallesBA">Callejero > Distancia a zonas verdes</button>
-                </div>
-                <!-- Segundo -->
-                <div class="box">
-                    <div class="legend legend-ba active" id="ldZonasVerdesBA">
-                        <span class="legend--item zona-verde">Zonas verdes</span>
-                    </div>
-                    <div class="legend legend-ba" id="ldCallesBA">
-                        <span class="legend--item calle-uno">Menos de 500m</span>
-                        <span class="legend--item calle-dos">Entre 500m y 1km</span>
-                        <span class="legend--item calle-tres">Entre 1 y 1,5km</span>
-                        <span class="legend--item calle-cuatro">Más de 1,5km</span>
-                    </div>
-                </div>
-                <!-- Mapa -->
-                <div id="mapboxBA"></div>
+        <section class="inner-container">
+            <h1 class="title">Mapa Buenos Aires</h1>
+            <h2 class="subtitle">Subtítulo para el mapa</h2>
+            <!-- Primero -->
+            <div class="b-btn">
+                <button class="btn btn-ba active" id="btnZonasVerdesBA">Zonas verdes</button>
+                <button class="btn btn-ba" id="btnCallesBA">Distancia a zonas verdes</button>
             </div>
+            <!-- Segundo -->
+            <div class="b-legend">
+                <div class="legend legend__alone legend-ba active" id="ldZonasVerdesBA">
+                    <span class="legend--item zona-verde">Zonas verdes</span>
+                </div>
+                <div class="legend legend-ba" id="ldCallesBA">
+                    <span class="legend--item calle-uno">Menos de 500m</span>
+                    <span class="legend--item calle-dos">Entre 500m y 1km</span>
+                    <span class="legend--item calle-tres">Entre 1 y 1,5km</span>
+                    <span class="legend--item calle-cuatro">Más de 1,5km</span>
+                </div>
+            </div>
+            <!-- Mapa -->
+            <div id="mapboxBA" class="b-map"></div>
+        </section>
 
-            <div class="inner-container">
-                <h2>Mapa San Salvador</h2>
-                <!-- Primero -->
-                <div class="box">
-                    <button class="btn btn-ss active" id="btnZonasVerdesSS">Zonas verdes</button>
-                    <button class="btn btn-ss" id="btnCallesSS">Callejero > Distancia a zonas verdes</button>
-                </div>
-                <!-- Segundo -->
-                <div class="box">
-                    <div class="legend legend-ss active" id="ldZonasVerdesSS">
-                        <span class="legend--item zona-verde">Zonas verdes</span>
-                    </div>
-                    <div class="legend legend-ss" id="ldCallesSS">
-                        <span class="legend--item calle-uno">Menos de 500m</span>
-                        <span class="legend--item calle-dos">Entre 500m y 1km</span>
-                        <span class="legend--item calle-tres">Entre 1 y 1,5km</span>
-                        <span class="legend--item calle-cuatro">Más de 1,5km</span>
-                    </div>
-                </div>
-                <!-- Mapa -->
-                <div id="mapboxSS"></div>
+        <section class="inner-container">
+            <h1 class="title">Mapa San Salvador</h1>
+            <h2 class="subtitle">Subtítulo para el mapa</h2>
+            <!-- Primero -->
+            <div class="b-btn">
+                <button class="btn btn-ss active" id="btnZonasVerdesSS">Zonas verdes</button>
+                <button class="btn btn-ss" id="btnCallesSS">Distancia a zonas verdes</button>
             </div>
-            
-        </div>
+            <!-- Segundo -->
+            <div class="b-legend">
+                <div class="legend legend__alone legend-ss active" id="ldZonasVerdesSS">
+                    <span class="legend--item zona-verde">Zonas verdes</span>
+                </div>
+                <div class="legend legend-ss" id="ldCallesSS">
+                    <span class="legend--item calle-uno">Menos de 500m</span>
+                    <span class="legend--item calle-dos">Entre 500m y 1km</span>
+                    <span class="legend--item calle-tres">Entre 1 y 1,5km</span>
+                    <span class="legend--item calle-cuatro">Más de 1,5km</span>
+                </div>
+            </div>
+            <!-- Mapa -->
+            <div id="mapboxSS" class="b-map"></div>
+        </section>
 		<script src="https://d3js.org/d3.v5.min.js"></script>
         <script src="https://d3js.org/topojson.v1.min.js"></script>
 		<script src="./js/main_ba.js"></script>

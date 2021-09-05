@@ -1,29 +1,47 @@
 html, body, p {
 	width: 100%;
 	margin: 0 auto;
-}
-
-.container {
-	width: 100%;
-	max-width: 768px;
-
-	margin: 0 auto;
+    font-family: 'Roboto', sans-serif;
 }
 
 .inner-container {
 	width: 100%;
+    max-width: 768px;
 	margin: 0 auto 40px auto;
 }
 
-.box {
-	margin: 20px auto;
+.title {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.subtitle {
+    font-size: 16px;
+    font-weight: 400;
+
+    margin-top: 8px;
+}
+
+.b-btn {
+    margin-top: 16px;
 }
 
 .btn {
-    background-color: #cecece;
+    background-color: #D4D4D4;
+    padding: 8px;
+    border: 0px;
+    border-radius: 2px;
+    cursor: pointer;
+
+    color: #fff;
+    font-size: 16px;
+
+    margin-right: 8px;
 }
+
 .btn.active {
-    background-color: #fff;
+    background-color: #081C29;
+    color: #fff;
 }
 
 .legend {
@@ -38,20 +56,28 @@ html, body, p {
     justify-content: flex-end;
 }
 
+.legend__alone {
+    justify-content: flex-start !important;
+}
+
 .legend--item {
     position: relative;
     display: flex;
     align-items: center;
-    height: 15px;
+    height: 18px;
 
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 10px;    
 
-    padding-left: 24px;
+    padding-left: 8px;
     margin-right: 16px;
-    margin-top: 12px; /* Incorporamos aquí este atributo y no 'chart__legend' para que en dispositivos móviles funcione correctamente el flex-wrap */
+    margin-top: 24px; /* Incorporamos aquí este atributo y no 'chart__legend' para que en dispositivos móviles funcione correctamente el flex-wrap */
+}
+
+.legend__alone .legend--item {
+    padding-left: 24px !important;
 }
 
 .legend--item:last-child {
@@ -61,32 +87,36 @@ html, body, p {
 .legend--item:before {
     position: absolute;
     content: '';
-    top: 50%;
-	transform: translateY(-50%);
+    top: 0px;
     left: 0;
-    width: 18px;
-    height: 2.5px;
+    width: 3px;
+    height: 20px;
     background-color: #ccc;
 }
 
 .legend--item.zona-verde:before {
-    background-color: green;
+    background-color: #63DAAF;
+    width: 20px;
 }
 
 .legend--item.calle-uno:before {
-    background-color: blue;
+    background-color: #095677;
 }
 
 .legend--item.calle-dos:before {
-    background-color: green;
+    background-color: #9B918C;
 }
 
 .legend--item.calle-tres:before {
-    background-color: yellow;
+    background-color: #FEB531;
 }
 
 .legend--item.calle-cuatro:before {
-    background-color: red;
+    background-color: #9CBDD2;
+}
+
+.b-map {
+    margin-top: 14px;
 }
 
 #mapboxBA, #mapboxSS {
