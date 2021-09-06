@@ -54,6 +54,7 @@ html, body, p {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    flex-wrap: wrap;
 }
 
 .legend__alone {
@@ -122,5 +123,15 @@ html, body, p {
 #mapboxBA, #mapboxSS {
 	width: 100%;
 	max-width: 768px;
-	height: 525px;
+	height: 500px;
+}
+
+@media screen and (max-width: 575px) {
+    .inner-container {
+        box-sizing: border-box;
+        padding: 0 12px;
+    }
+    .legend.active {
+        justify-content: flex-start;
+    }
 }

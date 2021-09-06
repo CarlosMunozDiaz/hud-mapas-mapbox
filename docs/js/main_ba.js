@@ -102,9 +102,10 @@ function initDataBA() {
         });
 
         //Dejar para hacerlo solo en mobile
-        if(window.innerWidth < 575) {
-            mapBA.scrollZoom.disable();
-        }     
+        // if(window.innerWidth < 575) {
+        //     mapBA.dragPan.disable();
+        //     mapBA.scrollZoom.disable();
+        // }     
 
         //Popup
         bind_event_ba('layer_ba_greenspace');
